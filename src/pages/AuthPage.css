@@ -1,0 +1,375 @@
+/* src/pages/AuthPage.css */
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #fafafa;
+
+  width: 100vw;             
+}
+
+.auth-box {
+  display: flex;
+  width: 900px;
+  height: 562px;
+  background: white;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  overflow: hidden;
+
+
+
+  
+}
+.logo-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-logo {
+  height: 40px; /* same height as heading */
+  width: auto;
+}
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.logo-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #2d6cdf;
+  padding: 3px;
+  background: #fff;
+}
+
+.logo-title {
+  font-size: 26px;
+  margin-top: 10px;
+  font-weight: 700;
+  color: #1e2a5a;
+}
+/* Left side (form) */
+.auth-form {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  font-family: "Cursive", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.auth-form h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.auth-form input,
+.auth-form select {
+  width: 106%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.auth-form input:focus,
+.auth-form select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.btn-primary {
+  width: 107%;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #1e4ed8;
+}
+
+.btn-google {
+  width: 107%;
+  padding: 12px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-google span {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.switch-auth {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  color: #2563eb;
+}
+
+footer {
+  margin-top: auto;
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Right side (testimonial) */
+.auth-testimonial {
+  flex: 1;
+  background: #f9f9f9;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.stars {
+  font-size: 22px;
+  color: black;
+  margin-bottom: 15px;
+}
+
+.quote {
+  font-size: 18px;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 20px;
+  max-width: 300px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: #ddd;
+  border-radius: 50%;
+}
+
+.company {
+  margin-left: auto;
+  font-weight: bold;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.dot {
+  font-size: 10px;
+  color: #bbb;
+}
+
+.dot.active {
+  color: #000;
+}
+
+
+
+
+
+/* Container fills screen but centers content */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc; /* Light background */
+  padding: 20px;
+}
+
+/* The Card Itself - Fixed Max Width */
+.auth-box {
+  display: flex;
+  width: 100%;
+  max-width: 900px; /* Stops it from being huge */
+  height: 600px;    /* Fixed reasonable height */
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+/* Left Side (Form) */
+.auth-form {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.logo-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.auth-logo { width: 32px; height: auto; }
+
+.auth-form h2 {
+  font-size: 1.8rem;
+  color: #0f172a;
+  margin: 0;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+/* Form Inputs */
+.auth-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-form input, .auth-form select {
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.auth-form input:focus { border-color: #2563eb; }
+
+.btn-primary {
+  background: #0f172a;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+.btn-primary:hover { background: #1e293b; }
+
+.btn-google {
+  margin-top: 10px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-google:hover { background: #f8fafc; }
+
+.switch-auth {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #64748b;
+  cursor: pointer;
+}
+.switch-auth:hover { color: #2563eb; text-decoration: underline; }
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  padding-top: 20px;
+}
+
+/* Right Side (Visual/Testimonial) */
+.auth-testimonial {
+  flex: 1;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  position: relative;
+}
+
+.stars { color: #f59e0b; font-size: 1.2rem; margin-bottom: 15px; }
+.quote { font-size: 1.3rem; line-height: 1.5; font-style: italic; margin-bottom: 30px; font-weight: 300; }
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.avatar-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+  object-fit: cover;
+}
+
+.user-info strong { display: block; font-size: 1rem; }
+.user-info p { margin: 0; font-size: 0.85rem; color: #94a3b8; }
+.company { margin-left: auto; font-weight: 700; opacity: 0.5; }
+
+.carousel-controls {
+  margin-top: 40px;
+  display: flex;
+  gap: 10px;
+  font-size: 1.2rem;
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Responsive: Stack on mobile */
+@media (max-width: 768px) {
+  .auth-box { flex-direction: column; height: auto; max-width: 450px; }
+  .auth-testimonial { display: none; /* Hide right side on small screens to save space */ }
+}
