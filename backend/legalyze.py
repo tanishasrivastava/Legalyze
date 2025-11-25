@@ -5,7 +5,7 @@ import json
 import re
 
 # Google Gemini setup
-os.environ["GOOGLE_API_KEY"] = "AIzaSyA9VivDebCbh_DrzxkVwDYRnW16doU6iis"
+os.environ["GOOGLE_API_KEY"] = 
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 # CHANGED: Using 1.5-flash for speed. It is much faster than Pro or experimental versions.
