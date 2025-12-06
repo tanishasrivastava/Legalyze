@@ -1,6 +1,7 @@
 # **Legalyze – AI Contract Analysis Platform**
 
 Legalyze is an AI-powered platform that helps users upload, analyze, edit, and understand legal contracts using advanced AI assistance.
+<img width="1439" height="778" alt="Screenshot 2025-11-25 at 5 46 03 PM" src="https://github.com/user-attachments/assets/bddcbc49-c397-491b-9c89-75300475cee8" />
 
 ---
 
