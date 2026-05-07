@@ -1,0 +1,38 @@
+[
+  {
+    "id": "GDPR-RTB-001",
+    "law": "GDPR",
+    "category": "Data Privacy",
+    "requirement": "Right to be Informed",
+    "description": "The contract must clearly state how personal data is collected, processed, and the specific purpose for storage.",
+    "mandatory_keywords": ["personal data", "processing", "purpose", "controller"],
+    "source_url": "https://gdpr-info.eu/art-13/"
+  },
+  {
+    "id": "GDPR-RTE-002",
+    "law": "GDPR",
+    "category": "Data Privacy",
+    "requirement": "Right to Erasure (Right to be Forgotten)",
+    "description": "The agreement must include a provision allowing the data subject to request deletion of their data.",
+    "mandatory_keywords": ["deletion", "erasure", "forgotten", "remove"],
+    "source_url": "https://gdpr-info.eu/art-17/"
+  },
+  {
+    "id": "LAB-MIN-042",
+    "law": "Labor Law",
+    "category": "Employment",
+    "requirement": "Statutory Notice Period",
+    "description": "Employment contracts must provide a minimum notice period of 30 days for termination unless for gross misconduct.",
+    "mandatory_keywords": ["notice period", "termination", "30 days", "written notice"],
+    "source_url": "https://www.ilo.org/"
+  },
+  {
+    "id": "FIN-LATE-099",
+    "law": "Financial Regulation",
+    "category": "Payments",
+    "requirement": "Late Payment Interest Cap",
+    "description": "Interest rates for late payments must not exceed the statutory limit (typically 8% above base rate).",
+    "mandatory_keywords": ["interest", "late payment", "per annum", "statutory"],
+    "source_url": "https://check-your-local-law.com"
+  }
+]

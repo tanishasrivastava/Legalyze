@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ClimbingBoxLoader } from "react-spinners"; // Added Import
+import { ClimbingBoxLoader } from "react-spinners"; 
 import "./SelectParty.css";
 
 export default function SelectParty() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Receive text from UploadPage
+  // Receive data from UploadPage state
   const { session_id, parties = [], filename, documentName, text } = location.state || {};
 
   const [selected, setSelected] = useState(parties.length > 0 ? parties[0] : "neutral");
   const [loading, setLoading] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const email = localStorage.getItem("email") || "user@example.com";
+  // Get real user info from localStorage
+  const email = localStorage.getItem("email"); 
   const name = localStorage.getItem("name") || "User";
   const userInitial = name ? name[0].toUpperCase() : "U";
 
@@ -24,9 +25,18 @@ export default function SelectParty() {
   };
 
   const handleReview = async () => {
+    if (!email) {
+      alert("User email not found. Please log in again.");
+      return;
+    }
+
     setLoading(true);
+    
+    // Create FormData and append all required fields for the backend
     const formData = new FormData();
     formData.append("perspective", selected);
+    formData.append("email", email); // FIX: Send email to backend
+    formData.append("filename", filename || documentName || "Contract.pdf"); // FIX: Send filename
 
     try {
       const res = await fetch(`http://127.0.0.1:8000/analyze/${session_id}/finalize`, {
@@ -37,7 +47,7 @@ export default function SelectParty() {
       const data = await res.json();
 
       if (res.ok) {
-        // UPDATE: Pass the text (either from previous state or backend) to AnalysisResult
+        // Navigate to results with all necessary data
         navigate("/analysis-result", { 
           state: { 
             session_id, 
@@ -45,15 +55,18 @@ export default function SelectParty() {
             risk_report: data.risk_report, 
             selected,
             parties, 
-            full_text: data.full_text || text // Ensure we pass the text
+            full_text: text,
+            filename: filename || documentName
           } 
         });
       } else {
-        alert("Error: " + (data.error || JSON.stringify(data)));
+        // Log the exact error from FastAPI (likely the 422 detail)
+        console.error("Server Error:", data);
+        alert("Error: " + (data.error || "Failed to finalize analysis. Check console."));
       }
     } catch (err) {
-      console.error(err);
-      alert("Failed to fetch analysis.");
+      console.error("Request failed:", err);
+      alert("Failed to connect to the server.");
     } finally {
       setLoading(false);
     }
@@ -68,21 +81,19 @@ export default function SelectParty() {
   const displayFileName = filename || documentName || "Contract File";
 
   return (
-    <div className="page-wrapper">
-      
-      {/* --- LOADER OVERLAY (Added) --- */}
+    <div className="page-wrapperr">
       {loading && (
         <div className="loader-overlay">
           <ClimbingBoxLoader color="#151a56" size={25} />
           <p className="loader-text">
-            Please wait until your contract is being analysed. <br />
-            The time taken to analyse your contract depends on your contract size.
+            Please wait while your contract is being analyzed... <br />
+            Large documents may take up to a minute.
           </p>
         </div>
       )}
 
       <header className="navbar">
-        <div className="nav-left" onClick={() => navigate("/reviews")} style={{ cursor: "pointer" }}>
+        <div className="nav-left" onClick={() => navigate("/dashboard")} style={{ cursor: "pointer" }}>
           <img src="/favicon.ico" alt="Logo" className="logo-icon" />
           <h1 className="logo-text">Legalyze</h1>
         </div>
@@ -110,31 +121,34 @@ export default function SelectParty() {
       </header>
 
       <main className="main-container">
-        <h2 className="page-title">We need a bit more information...</h2>
+        <h2 className="page-title">Final Step...</h2>
         <div className="file-card">
           <div className="file-icon-wrapper">
-            <svg width="24" height="24" fill="none" stroke="#9CA3AF" strokeWidth="2"><path d="M13 2H6C5 2 4 3 4 4V20C4 21 5 22 6 22H18C19 22 20 21 20 20V9L13 2Z" /><path d="M13 2V9H20" /><line x1="8" y1="13" x2="16" y2="13" /><line x1="8" y1="17" x2="16" y2="17" /></svg>
+            <svg width="24" height="24" fill="none" stroke="#9CA3AF" strokeWidth="2">
+              <path d="M13 2H6C5 2 4 3 4 4V20C4 21 5 22 6 22H18C19 22 20 21 20 20V9L13 2Z" />
+              <path d="M13 2V9H20" />
+            </svg>
           </div>
           <span className="file-name">{displayFileName}</span>
         </div>
 
         <div className="form-section">
-          <p className="question-label">Which Party's Perspective Should We Review The Contract From?</p>
+          <p className="question-label">Which party's perspective are you interested in?</p>
           <div className="radio-group">
-            {parties.length === 0 && (
+            {parties.length === 0 ? (
               <label className="radio-label">
-                <input type="radio" checked={selected === "neutral"} onChange={() => setSelected("neutral")} /> Neutral
+                <input type="radio" checked={selected === "neutral"} onChange={() => setSelected("neutral")} /> Neutral Perspective
               </label>
+            ) : (
+              parties.map((p, idx) => (
+                <label key={idx} className="radio-label">
+                  <input type="radio" name="party" value={p} checked={selected === p} onChange={() => setSelected(p)} /> {p}
+                </label>
+              ))
             )}
-            {parties.map((p, idx) => (
-              <label key={idx} className="radio-label">
-                <input type="radio" name="party" value={p} checked={selected === p} onChange={() => setSelected(p)} /> {p}
-              </label>
-            ))}
           </div>
-          <p className="helper-text">This helps us give a more accurate, personalized analysis.</p>
           <button onClick={handleReview} className="review-btn" disabled={loading}>
-            {loading ? "Analyzing..." : "Review"}
+            {loading ? "Processing..." : "Generate Analysis"}
           </button>
         </div>
       </main>

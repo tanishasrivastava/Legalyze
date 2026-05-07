@@ -22,30 +22,32 @@ function AuthPage() {
     }
   }, [location.state]);
 
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      if (isLogin) {
-        const res = await axios.post("http://localhost:8080/api/auth/login", {
-          email: form.email,
-          password: form.password,
-        });
-        alert("Logged in successfully!");
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("role", res.data.role);
-        localStorage.setItem("name", res.data.name);
-        localStorage.setItem("email", form.email);
-        // Redirect to dashboard or upload page
-        window.location.href = "/upload"; 
-      } else {
-        await axios.post("http://localhost:8080/api/auth/signup", form);
-        alert("User registered successfully! Please Login.");
-        setIsLogin(true);
-      }
-    } catch (e) {
-      alert("Error: " + (e.response?.data || e.message));
+  e.preventDefault();
+  try {
+    if (isLogin) {
+      const res = await axios.post("http://localhost:8080/api/auth/login", {
+        email: form.email,
+        password: form.password,
+      });
+      alert("Logged in successfully!");
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("role", res.data.role);
+      localStorage.setItem("name", res.data.name);
+      localStorage.setItem("email", form.email);
+      
+      // REDIRECT TO CHOICE PAGE
+      navigate("/workspace-choice"); 
+    } else {
+      await axios.post("http://localhost:8080/api/auth/signup", form);
+      alert("User registered successfully! Please Login.");
+      setIsLogin(true);
     }
-  };
+  } catch (e) {
+    alert("Error: " + (e.response?.data || e.message));
+  }
+};
 
   return (
     <div className="auth-container">

@@ -1,0 +1,160 @@
+/* ===== TEAMS PAGE ===== */
+.teams-loading { display:flex;align-items:center;justify-content:center;height:300px;color:#64748b;font-size:15px; }
+.teams-page { padding:32px 36px;max-width:960px; }
+
+.teams-header { display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px; }
+.teams-header h1 { font-size:22px;font-weight:700;color:#0f172a;margin:0 0 4px; }
+.teams-header p  { font-size:14px;color:#64748b;margin:0; }
+
+.create-btn-top { display:flex;align-items:center;gap:6px;background:#2563eb;color:#fff;border:none;border-radius:8px;padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;transition:background .15s; }
+.create-btn-top:hover { background:#1d4ed8; }
+
+.teams-empty-state { background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:60px 40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px; }
+.empty-illustration { width:64px;height:64px;background:#eff6ff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#2563eb;margin-bottom:8px; }
+.teams-empty-state h2 { font-size:17px;font-weight:700;color:#1e293b;margin:0; }
+.teams-empty-state p  { font-size:14px;color:#64748b;margin:0; }
+.btn-primary-action { display:flex;align-items:center;gap:6px;background:#2563eb;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px;transition:background .15s; }
+.btn-primary-action:hover { background:#1d4ed8; }
+
+.teams-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px; }
+
+.team-card { background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:14px;transition:box-shadow .15s; }
+.team-card:hover { box-shadow:0 4px 16px rgba(0,0,0,.07); }
+
+.team-card-header { display:flex;align-items:center;justify-content:space-between; }
+.team-title-sec { display:flex;align-items:center;gap:10px; }
+.team-icon-box { width:38px;height:38px;background:#eff6ff;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#2563eb; }
+.team-title-sec h3 { font-size:14px;font-weight:700;color:#1e293b;margin:0; }
+.team-title-sec p  { font-size:12px;color:#94a3b8;margin:0; }
+
+.invite-btn-small { display:flex;align-items:center;gap:4px;background:#eff6ff;color:#2563eb;border:none;border-radius:7px;padding:6px 11px;font-size:12px;font-weight:600;cursor:pointer;transition:background .15s; }
+.invite-btn-small:hover { background:#dbeafe; }
+
+.delete-btn-small { display:flex;align-items:center;justify-content:center;background:#fff1f2;color:#ef4444;border:none;border-radius:7px;padding:6px 8px;cursor:pointer;transition:background .15s; }
+.delete-btn-small:hover { background:#fee2e2; }
+
+.members-list { display:flex;flex-direction:column;gap:8px; }
+.member-item { display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f8fafc; }
+.member-info { display:flex;align-items:center;gap:10px; }
+.member-avatar { width:30px;height:30px;background:#2563eb;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0; }
+.member-text .m-name  { font-size:12px;font-weight:600;color:#1e293b;margin:0; }
+.member-text .m-email { font-size:11px;color:#94a3b8;margin:0; }
+.member-actions { display:flex;align-items:center;gap:8px; }
+
+.role-pill { display:flex;align-items:center;gap:3px;font-size:10px;font-weight:600;padding:3px 8px;border-radius:99px; }
+.role-pill.admin  { background:#eff6ff;color:#2563eb; }
+.role-pill.editor { background:#fef3c7;color:#b45309; }
+.role-pill.viewer { background:#f1f5f9;color:#475569; }
+
+.mini-pending-dot { position:absolute;bottom:0;right:0;width:8px;height:8px;background:#f59e0b;border:1.5px solid #fff;border-radius:50%; }
+.more-members { font-size:11px;color:#94a3b8;text-align:center;margin:0; }
+
+.view-team-btn { display:flex;align-items:center;justify-content:center;gap:4px;background:#f8fafc;color:#374151;border:1px solid #e2e8f0;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;width:100%; }
+.view-team-btn:hover { background:#eff6ff;color:#2563eb;border-color:#bfdbfe; }
+
+/* ─── TEAM DETAIL ─── */
+.team-detail-back { display:flex;align-items:center;gap:6px;color:#64748b;font-size:13px;font-weight:500;cursor:pointer;margin-bottom:24px;transition:color .15s; }
+.team-detail-back:hover { color:#2563eb; }
+
+.team-detail-header { display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px; }
+.team-detail-left { display:flex;align-items:center;gap:14px; }
+.team-detail-icon { width:48px;height:48px;background:#eff6ff;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#2563eb; }
+.team-detail-name { font-size:20px;font-weight:700;color:#0f172a;margin:0 0 3px; }
+.team-detail-meta { font-size:13px;color:#64748b;margin:0; }
+.team-detail-actions { display:flex;align-items:center;gap:8px; }
+
+.btn-share-contract { display:flex;align-items:center;gap:6px;background:#fff;border:1px solid #e2e8f0;color:#374151;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s; }
+.btn-share-contract:hover { border-color:#2563eb;color:#2563eb; }
+
+.btn-invite-primary { display:flex;align-items:center;gap:6px;background:#2563eb;color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;transition:background .15s; }
+.btn-invite-primary:hover { background:#1d4ed8; }
+
+.btn-delete-team { display:flex;align-items:center;justify-content:center;background:#fff1f2;color:#ef4444;border:none;border-radius:8px;padding:8px 10px;cursor:pointer;transition:background .15s; }
+.btn-delete-team:hover { background:#fee2e2; }
+
+.team-tabs { display:flex;border-bottom:1px solid #e2e8f0;margin-bottom:20px; }
+.team-tab { display:flex;align-items:center;gap:6px;background:none;border:none;border-bottom:2px solid transparent;padding:10px 18px;font-size:13px;font-weight:500;color:#64748b;cursor:pointer;margin-bottom:-1px;transition:all .15s; }
+.team-tab:hover { color:#2563eb; }
+.team-tab.active { color:#2563eb;border-bottom-color:#2563eb;font-weight:600; }
+.tab-count { background:#eff6ff;color:#2563eb;font-size:10px;font-weight:700;padding:1px 6px;border-radius:99px; }
+.team-tab.active .tab-count { background:#2563eb;color:#fff; }
+
+.team-tab-content { background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden; }
+
+/* Members tab */
+.members-tab { display:flex;flex-direction:column; }
+.member-row { display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #f1f5f9;transition:background .12s; }
+.member-row:last-child { border-bottom:none; }
+.member-row:hover { background:#fafbff; }
+.member-row-left { display:flex;align-items:center;gap:12px; }
+.member-avatar-lg { width:38px;height:38px;background:#2563eb;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0; }
+.pending-dot { position:absolute;bottom:0;right:0;width:10px;height:10px;background:#f59e0b;border:2px solid #fff;border-radius:50%; }
+.member-row-name { font-size:14px;font-weight:600;color:#1e293b;display:flex;align-items:center;gap:6px; }
+.member-row-email { font-size:12px;color:#94a3b8;margin-top:2px; }
+.pending-badge { font-size:10px;font-weight:600;background:#fef3c7;color:#b45309;padding:2px 7px;border-radius:99px; }
+.member-row-right { display:flex;align-items:center;gap:10px; }
+.role-chip { display:flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:4px 10px;border-radius:99px; }
+.role-chip.admin  { background:#eff6ff;color:#2563eb; }
+.role-chip.editor { background:#fef3c7;color:#b45309; }
+.role-chip.viewer { background:#f1f5f9;color:#475569; }
+.remove-btn { background:none;border:none;color:#cbd5e1;cursor:pointer;padding:4px;border-radius:6px;display:flex;align-items:center;transition:color .15s,background .15s; }
+.remove-btn:hover { color:#ef4444;background:#fff1f2; }
+
+/* Contracts tab */
+.contracts-tab { display:flex;flex-direction:column; }
+.contracts-empty { padding:60px 40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px; }
+.contracts-empty h3 { font-size:15px;font-weight:700;color:#1e293b;margin:8px 0 0; }
+.contracts-empty p  { font-size:13px;color:#94a3b8;margin:0; }
+.btn-share-empty { display:flex;align-items:center;gap:6px;background:#2563eb;color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:600;cursor:pointer;margin-top:12px;transition:background .15s; }
+.btn-share-empty:hover { background:#1d4ed8; }
+.shared-contract-row { display:flex;align-items:center;justify-content:space-between;padding:15px 20px;border-bottom:1px solid #f1f5f9;cursor:pointer;transition:background .12s; }
+.shared-contract-row:last-child { border-bottom:none; }
+.shared-contract-row:hover { background:#fafbff; }
+.sc-left { display:flex;align-items:center;gap:12px; }
+.sc-icon { width:36px;height:36px;background:#eff6ff;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#2563eb; }
+.sc-name { font-size:13px;font-weight:600;color:#1e293b; }
+.sc-meta { font-size:11px;color:#94a3b8;margin-top:2px; }
+.sc-right { display:flex;align-items:center;gap:10px; }
+.risk-badge { font-size:11px;font-weight:600;padding:3px 8px;border-radius:99px; }
+.risk-badge.high   { background:#fee2e2;color:#b91c1c; }
+.risk-badge.medium { background:#fef3c7;color:#b45309; }
+.risk-badge.low    { background:#dcfce7;color:#16a34a; }
+
+/* Activity tab */
+.activity-tab { display:flex;flex-direction:column; }
+.activity-row { display:flex;align-items:flex-start;gap:12px;padding:14px 20px;border-bottom:1px solid #f1f5f9; }
+.activity-row:last-child { border-bottom:none; }
+.act-avatar { width:34px;height:34px;background:#2563eb;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0; }
+.act-text { font-size:13px;color:#334155;line-height:1.4; }
+.act-time { font-size:11px;color:#94a3b8;margin-top:3px; }
+
+/* ─── MODALS ─── */
+.modal-backdrop { position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(3px);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px; }
+.modal-box { background:#fff;border-radius:14px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,.15);animation:modal-in .22s cubic-bezier(.34,1.4,.64,1);overflow:hidden; }
+.share-box { max-width:500px; }
+@keyframes modal-in { from{transform:scale(.93) translateY(12px);opacity:0} to{transform:scale(1) translateY(0);opacity:1} }
+.modal-header { display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;border-bottom:1px solid #f1f5f9; }
+.modal-header h3 { font-size:15px;font-weight:700;color:#1e293b;margin:0; }
+.close-x { color:#94a3b8;cursor:pointer;transition:color .15s; }
+.close-x:hover { color:#0f172a; }
+.modal-body { padding:18px 22px 22px;display:flex;flex-direction:column;gap:10px; }
+.modal-body label { font-size:12px;font-weight:600;color:#475569;margin-bottom:-4px; }
+.modal-body input { width:100%;border:1px solid #e2e8f0;border-radius:8px;padding:9px 12px;font-size:13px;color:#1e293b;outline:none;box-sizing:border-box;transition:border-color .15s; }
+.modal-body input:focus { border-color:#2563eb; }
+.input-with-icon { display:flex;align-items:center;gap:8px;border:1px solid #e2e8f0;border-radius:8px;padding:9px 12px;color:#94a3b8;transition:border-color .15s; }
+.input-with-icon:focus-within { border-color:#2563eb;color:#2563eb; }
+.input-with-icon input { border:none;padding:0;outline:none;flex:1;font-size:13px;color:#1e293b; }
+.role-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px; }
+.role-select-item { display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 8px;border:1.5px solid #e2e8f0;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;color:#475569;transition:all .15s; }
+.role-select-item:hover { border-color:#2563eb;color:#2563eb; }
+.role-select-item.active { border-color:#2563eb;background:#eff6ff;color:#2563eb; }
+.modal-submit { background:#2563eb;color:#fff;border:none;border-radius:8px;padding:10px;font-size:14px;font-weight:600;cursor:pointer;margin-top:6px;transition:background .15s; }
+.modal-submit:hover { background:#1d4ed8; }
+.share-hint { font-size:13px;color:#64748b;margin:0; }
+.no-contracts-msg { text-align:center;font-size:13px;color:#94a3b8;padding:20px 0; }
+.contract-pick-list { display:flex;flex-direction:column;gap:8px;max-height:320px;overflow-y:auto; }
+.contract-pick-row { display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border:1px solid #e2e8f0;border-radius:9px;cursor:pointer;transition:all .15s; }
+.contract-pick-row:hover { border-color:#2563eb;background:#fafbff; }
+.cp-left { display:flex;align-items:center;gap:10px; }
+.cp-name { font-size:13px;font-weight:600;color:#1e293b; }
+.cp-date { font-size:11px;color:#94a3b8;margin-top:2px; }

@@ -18,8 +18,8 @@ body {
 }
 
 /* Wrapper to ensure full screen layout regardless of parent containers */
-.page-wrapper {
-  width: 167%;
+.page-wrapperr {
+ width: 283%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

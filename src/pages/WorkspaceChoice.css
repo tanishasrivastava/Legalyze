@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.workspace-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevents scroll if exactly 100vh */
+}
+
+.workspace-content {
+  max-width: 900px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.workspace-header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.brand-text {
+  color: #3b5998; /* Deeper professional blue to match brand */
+}
+
+.workspace-header p {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-bottom: 40px;
+}
+
+.workspace-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.workspace-card {
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 20px;
+  padding: 32px;
+  text-align: left;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+}
+
+.workspace-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.06);
+}
+
+.business-card {
+  border: 2px solid #2563eb;
+}
+
+.popular-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #2563eb;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.w-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.bg-blue-soft { background-color: #eff6ff; }
+.bg-blue-main { background-color: #eff6ff; } /* Lighter blue box as per image */
+
+.workspace-card h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.w-description {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  min-height: 40px;
+}
+
+.w-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  flex-grow: 1;
+}
+
+.w-features-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #475569;
+  margin-bottom: 12px;
+}
+
+.w-icon-svg {
+  color: #2563eb;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.w-link-btn {
+  background: transparent;
+  border: none;
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.w-link-btn.active {
+  color: #2563eb;
+}
+
+@media (max-height: 700px) {
+  .workspace-header h1 { font-size: 1.8rem; }
+  .workspace-header p { margin-bottom: 20px; }
+  .workspace-card { padding: 20px; }
+}
+
+@media (max-width: 768px) {
+  .workspace-grid { grid-template-columns: 1fr; }
+  .workspace-container { overflow-y: auto; height: auto; padding: 40px 0; }
+}
