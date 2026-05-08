@@ -6,6 +6,7 @@ from pydantic import BaseModel, EmailStr
 from typing import Optional, List
 from datetime import datetime
 from bson import ObjectId
+from dotenv import load_dotenv
 import io
 import uuid
 import traceback
@@ -32,6 +33,8 @@ from legalyze import (
     generate_compliance_check,       # ← NEW
 )
 
+load_dotenv()
+
 app = FastAPI(title="Legalyze API")
 
 app.add_middleware(
@@ -48,9 +51,11 @@ if not os.path.exists(TEMP_DIR):
     os.makedirs(TEMP_DIR)
 
 # ─── DB CONNECTION ───
-MONGO_DETAILS = "mongodb://localhost:27017"
-client = AsyncIOMotorClient(MONGO_DETAILS)
-database = client.legalyze_db
+MONGO_URI = os.getenv("MONGO_URI")
+
+client = AsyncIOMotorClient(MONGO_URI)
+
+database = client["legalyze_db"]
 
 user_collection     = database.get_collection("users")
 contract_collection = database.get_collection("contracts")
