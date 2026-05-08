@@ -8,5 +8,6 @@ motor
 pydantic
 email-validator
 python-dotenv
-bson
 pymongo
+groq
+dnspython
