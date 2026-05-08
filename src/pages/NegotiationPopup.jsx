@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./NegotiationPopup.css";
 
+const AI_API = import.meta.env.VITE_AI_API;
+
 const CheckCircleIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
@@ -19,7 +21,7 @@ export default function NegotiationPopup({ isOpen, onClose, contractText, perspe
   useEffect(() => {
     if (isOpen && contractText) {
       setLoading(true);
-      axios.post("http://localhost:8000/negotiation-strategy", {
+       axios.post(`${AI_API}/negotiation-strategy`, {
         contract_text: contractText,
         perspective: perspective
       })

@@ -3,6 +3,8 @@ import "./CertificatePopup.css";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 
+const AI_API = import.meta.env.VITE_AI_API;
+
 export default function CertificatePopup({ isOpen, onClose, contractText, perspective }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -13,7 +15,7 @@ export default function CertificatePopup({ isOpen, onClose, contractText, perspe
     const fetchCertificate = async () => {
       setLoading(true);
       try {
-        const res = await fetch("http://localhost:8000/certificate", {
+  const res = await fetch(`${AI_API}/certificate`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ contract_text: contractText, perspective })

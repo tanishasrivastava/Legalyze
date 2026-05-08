@@ -8,7 +8,8 @@ import {
 import DashboardLayout from "./DashboardLayout";
 import "./Teams.css";
 
-const API = "http://127.0.0.1:8000";
+const AUTH_API = import.meta.env.VITE_AUTH_API;
+const AI_API = import.meta.env.VITE_AI_API;
 
 const Teams = () => {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ const Teams = () => {
 
   const fetchTeams = async () => {
     try {
-      const res = await axios.get(`${API}/api/teams/${email}`);
+     const res = await axios.get(`${AI_API }/api/teams/${email}`);
       setTeams(res.data);
     } catch (err) {
       console.error("Teams fetch failed", err);
@@ -55,8 +56,8 @@ const Teams = () => {
   const fetchTeamDetail = async (team) => {
     try {
       const [contractsRes, activityRes] = await Promise.all([
-        axios.get(`${API}/api/teams/${team._id}/contracts`),
-        axios.get(`${API}/api/teams/${team._id}/activity`),
+     axios.get(`${AI_API}/api/teams/${team._id}/contracts`),
+  axios.get(`${AI_API}/api/teams/${team._id}/activity`),
       ]);
       setSharedContracts(contractsRes.data || []);
       setTeamActivity(activityRes.data || []);
@@ -69,7 +70,7 @@ const Teams = () => {
 
   const fetchUserContracts = async () => {
     try {
-      const res = await axios.get(`${API}/api/user/dashboard-data/${email}`);
+    const res = await axios.get(`${AI_API}/api/user/dashboard-data/${email}`);
       setUserContracts(res.data.recent_contracts || []);
     } catch (err) {
       console.error("User contracts fetch failed", err);
@@ -80,7 +81,7 @@ const Teams = () => {
   // ── Helpers ────────────────────────────────────────────────
 
   const refreshSelectedTeam = async (teamId) => {
-    const res = await axios.get(`${API}/api/teams/${email}`);
+  const res = await axios.get(`${AI_API}/api/teams/${email}`);
     setTeams(res.data);
     const updated = res.data.find(t => t._id === teamId);
     if (updated) {
@@ -109,7 +110,7 @@ const Teams = () => {
   const handleCreateTeam = async () => {
     if (!newTeamName.trim()) return;
     try {
-      await axios.post(`${API}/api/teams/create`, { name: newTeamName, owner_email: email });
+     await axios.post(`${AI_API}/api/teams/create`, {name: newTeamName, owner_email: email });
       setShowCreateModal(false);
       setNewTeamName("");
       fetchTeams();
@@ -121,7 +122,7 @@ const Teams = () => {
   const handleInvite = async () => {
     if (!inviteEmail.trim()) return;
     try {
-      await axios.post(`${API}/api/teams/invite`, {
+await axios.post(`${AI_API}/api/teams/invite`, {
         team_id: selectedTeam._id,
         email: inviteEmail,
         role: inviteRole,
@@ -140,7 +141,9 @@ const Teams = () => {
     if (!window.confirm(`Delete team "${team.name}"? All members will be notified.`)) return;
     try {
       // admin_email passed as query param (matches the fixed backend)
-      await axios.delete(`${API}/api/teams/${team._id}?admin_email=${encodeURIComponent(email)}`);
+     await axios.delete(
+  `${AI_API}/api/teams/${team._id}?admin_email=${encodeURIComponent(email)}`
+);
       setSelectedTeam(null);
       fetchTeams();
     } catch (err) {
@@ -151,7 +154,7 @@ const Teams = () => {
   const handleRemoveMember = async (memberEmail) => {
     if (!window.confirm(`Remove ${memberEmail} from team?`)) return;
     try {
-      await axios.post(`${API}/api/teams/remove-member`, {
+   await axios.post(`${AI_API}/api/teams/remove-member`, {
         team_id: selectedTeam._id,
         member_email: memberEmail,
         admin_email: email,
@@ -170,7 +173,7 @@ const Teams = () => {
   const handleShareContract = async (contract) => {
     setShareLoading(true);
     try {
-      await axios.post(`${API}/api/teams/share-contract`, {
+ await axios.post(`${AI_API}/api/teams/share-contract`, {
         team_id:         selectedTeam._id,
         contract_id:     contract.id,
         shared_by_email: email,

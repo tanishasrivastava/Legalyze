@@ -4,8 +4,10 @@ import axios from "axios";
 import { LayoutDashboard, FileText, Wrench, Users, UserCircle, LogOut, Scale, ChevronDown, Settings, Bell } from "lucide-react";
 import "./DashboardLayout.css";
 
-const API = "http://127.0.0.1:8000";
+
 const NOTIF_POLL_INTERVAL = 120_000; // 2 minutes — not 30s
+/* ─── ENV BASE URL ─── */
+const API = import.meta.env.VITE_AUTH_API;
 
 const DashboardLayout = ({ children }) => {
   const navigate    = useNavigate();

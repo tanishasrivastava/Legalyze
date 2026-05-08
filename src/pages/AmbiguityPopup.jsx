@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./AmbiguityPopup.css";
 
+const API = import.meta.env.VITE_AI_API;
+
 const CloseX = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -27,7 +29,7 @@ export default function AmbiguityPopup({ isOpen, onClose, contractText }) {
   useEffect(() => {
     if (isOpen && contractText) {
       setLoading(true);
-      axios.post("http://localhost:8000/ambiguity", {
+      axios.post(`${API}/ambiguity`, { 
         contract_text: contractText
       })
       .then(res => {

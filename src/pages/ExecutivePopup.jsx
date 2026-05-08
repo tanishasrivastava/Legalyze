@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./ExecutivePopup.css";
 
+
+const AI_API = import.meta.env.VITE_AI_API;
+
 const ExecutivePopup = ({ isOpen, onClose, contractText, perspective }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -9,7 +12,7 @@ const ExecutivePopup = ({ isOpen, onClose, contractText, perspective }) => {
     if (isOpen && contractText) {
       setLoading(true);
       setData(null);
-      fetch("http://localhost:8000/executive-summary", {
+ fetch(`${AI_API}/executive-summary`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ contract_text: contractText, perspective }),

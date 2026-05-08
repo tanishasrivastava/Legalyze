@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardLayout from "./DashboardLayout";
+import CompliancePopup from "./CompliancePopup";
 
 // Import all existing popups unchanged
 import TimelinePopup from "./TimelinePopup";
@@ -11,9 +12,12 @@ import CertificatePopup from "./CertificatePopup";
 import ExecutivePopup from "./ExecutivePopup";
 import FinancialPopup from "./FinancialPopup";
 import EscapeRoutePopup from "./EscapeRoutePopup";
+import SimulatorPopup from "./SimulatorPopup";
 
 import "./AIToolsPage.css";
 
+
+const AI_API = import.meta.env.VITE_AI_API;
 // ─── Tool definitions (same 10 as AdvancedTools) ───────────────────────────
 const TOOLS = [
   {
@@ -204,7 +208,7 @@ function UploadModal({ tool, onClose, onReady }) {
         // Upload PDF and extract text
         const formData = new FormData();
         formData.append("file", file);
-        const res = await fetch("http://127.0.0.1:8000/analyze", {
+        const res = await fetch(`${AI_API}/analyze`, {
           method: "POST",
           body: formData,
         });
@@ -453,11 +457,18 @@ export default function AIToolsPage() {
         perspective="The User"
       />
 
-      {/* Compliance & Simulator — generic placeholder since no dedicated popup exists */}
-      {(activeTool?.id === "compliance" || activeTool?.id === "simulator") && contractText && (
-        <GenericToolModal tool={activeTool} contractText={contractText} onClose={handleCloseTool} />
-      )}
-
+      <CompliancePopup
+  isOpen={activeTool?.id === "compliance"}
+  onClose={handleCloseTool}
+  contractText={contractText}
+  perspective="The User"
+/>
+<SimulatorPopup
+  isOpen={activeTool?.id === "simulator"}
+  onClose={handleCloseTool}
+  contractText={contractText}
+  perspective="The User"
+/>
       <ExecutivePopup
         isOpen={activeTool?.id === "executive"}
         onClose={handleCloseTool}

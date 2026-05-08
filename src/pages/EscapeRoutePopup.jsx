@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./EscapeRoutePopup.css";
 
+const AI_API = import.meta.env.VITE_AI_API;
 /* ---- Icons ---- */
 const CloseX = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -104,7 +105,7 @@ export default function EscapeRoutePopup({ isOpen, onClose, contractText, perspe
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("http://localhost:8000/escape-routes", {
+   const res = await fetch(`${AI_API}/escape-routes`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ contract_text: contractText, perspective: perspective || "The User" }),

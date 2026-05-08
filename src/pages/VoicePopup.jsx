@@ -3,6 +3,8 @@ import axios from "axios";
 import { Mic, X, Send, Play, RotateCcw } from "lucide-react";
 import "./VoicePopup.css";
 
+const AI_API = import.meta.env.VITE_AI_API;
+
 export default function VoicePopup({ isOpen, onClose, contractText }) {
   const [isListening, setIsListening] = useState(false);
   const [voiceQuery, setVoiceQuery] = useState("");
@@ -32,7 +34,8 @@ export default function VoicePopup({ isOpen, onClose, contractText }) {
 
   useEffect(() => {
     if (isOpen && contractText) {
-      axios.post("http://localhost:8000/voice-suggestions", { contract_text: contractText })
+    axios
+        .post(`${AI_API}/voice-suggestions`, { contract_text: contractText })
         .then(res => setSuggestions(res.data.suggestions))
         .catch(() => setSuggestions([
           "What happens if I terminate?",
@@ -59,7 +62,7 @@ export default function VoicePopup({ isOpen, onClose, contractText }) {
 
     setIsLoading(true);
     try {
-      const response = await axios.post("http://localhost:8000/voice-ask", {
+       const response = await axios.post(`${AI_API}/voice-ask`, {
         contract_text: contractText,
         query: finalQuery
       });

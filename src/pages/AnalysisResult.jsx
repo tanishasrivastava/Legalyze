@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import ContractEditor from "./ContractEditor";
 import "./AnalysisResult.css";
 
+const API = import.meta.env.VITE_AI_API; 
+
 /* ─── Helper Icons ─── */
 const SparklesIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -276,7 +278,13 @@ export default function AnalysisResult() {
     setChatInput(""); setChatLoading(true);
     const fd = new FormData(); fd.append("query",userMsg);
     try {
-      const res  = await fetch(`http://127.0.0.1:8000/analyze/${session_id}/ask`,{method:"POST",body:fd});
+     const res = await fetch(
+  `${API}/analyze/${session_id}/ask`,
+  {
+    method: "POST",
+    body: fd,
+  }
+);
       const json = await res.json();
       setMessages(prev=>[...prev,{role:"bot",text:cleanMessage(json.answer)}]);
     } catch { setMessages(prev=>[...prev,{role:"bot",text:"Sorry, I encountered an error."}]); }

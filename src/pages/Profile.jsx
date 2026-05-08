@@ -4,6 +4,8 @@ import { User, Mail, Building2, Briefcase, Save, UserCircle, Camera } from "luci
 import DashboardLayout from "./DashboardLayout";
 import "./Profile.css";
 
+const AI_API = import.meta.env.VITE_AI_API;
+
 const Profile = () => {
   const [formData, setFormData] = useState({
     fullName: localStorage.getItem("name") || "",
@@ -17,7 +19,7 @@ const Profile = () => {
   const handleSave = async () => {
     setLoading(true);
     try {
-      await axios.post("http://127.0.0.1:8000/api/user/update-profile", formData);
+        await axios.post(`${AI_API}/api/user/update-profile`, formData);
       localStorage.setItem("name", formData.fullName);
       localStorage.setItem("company", formData.company);
       localStorage.setItem("role", formData.role);

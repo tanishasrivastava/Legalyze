@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./TimelinePopup.css";
 
+const AI_API = import.meta.env.VITE_AI_API;
+
 /* ---------------- ICONS ---------------- */
 const CloseX = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -32,7 +34,7 @@ const TimelinePopup = ({ isOpen, onClose, sessionId, contractText }) => {
     setLoading(true);
     try {
       // Using the POST method from your logic requirement
-      const response = await fetch("http://localhost:8000/timeline", {
+     const response = await fetch("http://localhost:8000/timeline", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 

@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./AuthPage.css";
 
+
+const AUTH_API = import.meta.env.VITE_AUTH_API;
 function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
   const [form, setForm] = useState({
@@ -23,29 +25,34 @@ function AuthPage() {
   }, [location.state]);
 
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
+
+  console.log("Submitting login...");
+  console.log("AUTH_API =", AUTH_API);
+
   try {
-    if (isLogin) {
-      const res = await axios.post("http://localhost:8080/api/auth/login", {
+    const res = await axios.post(
+      `${AUTH_API}/api/auth/login`,
+      {
         email: form.email,
         password: form.password,
-      });
-      alert("Logged in successfully!");
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("role", res.data.role);
-      localStorage.setItem("name", res.data.name);
-      localStorage.setItem("email", form.email);
-      
-      // REDIRECT TO CHOICE PAGE
-      navigate("/workspace-choice"); 
-    } else {
-      await axios.post("http://localhost:8080/api/auth/signup", form);
-      alert("User registered successfully! Please Login.");
-      setIsLogin(true);
-    }
-  } catch (e) {
-    alert("Error: " + (e.response?.data || e.message));
+      }
+    );
+
+    console.log("LOGIN RESPONSE:", res.data);
+
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("role", res.data.role);
+    localStorage.setItem("name", res.data.name);
+    localStorage.setItem("email", form.email);
+
+    console.log("Navigating...");
+    navigate("/workspace-choice");
+
+  } catch (err) {
+    console.error("LOGIN ERROR:", err.response?.data || err.message);
+    alert("Login failed");
   }
 };
 

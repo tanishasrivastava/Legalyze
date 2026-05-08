@@ -2,6 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./HomePage.css";
 
+const AUTH_API = import.meta.env.VITE_AUTH_API;
+const AI_API = import.meta.env.VITE_AI_API;
+
 function HomePage() {
   const navigate = useNavigate();
   const testimonialRef = useRef(null);
@@ -31,7 +34,7 @@ function HomePage() {
   const handleSubscribe = async () => {
     if (!email) { setMessage("Please enter a valid email."); return; }
     try {
-      const res = await fetch("http://localhost:8080/api/newsletter/subscribe", {
+     const res = await fetch(`${AUTH_API}/api/newsletter/subscribe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

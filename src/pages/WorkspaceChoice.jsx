@@ -3,13 +3,15 @@ import { useNavigate } from "react-router-dom";
 import "./WorkspaceChoice.css";
 import axios from "axios";
 
+const AI_API = import.meta.env.VITE_AI_API;
+
 function WorkspaceChoice() {
   const navigate = useNavigate();
 
   const handleSelection = async (type) => {
     const email = localStorage.getItem("email");
     try {
-      await axios.post("http://127.0.0.1:8000/api/user/update-workspace", {
+     await axios.post(`${AI_API}/api/user/update-workspace`, {
         email: email,
         workspaceType: type,
       });

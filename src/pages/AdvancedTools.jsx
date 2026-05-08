@@ -12,6 +12,7 @@ import EscapeRoutePopup from "./EscapeRoutePopup";
 import CompliancePopup from "./CompliancePopup";
 import "./AdvancedTools.css";
 
+const AI_API = import.meta.env.VITE_AI_API;
 /* ---------------- ICONS ---------------- */
 const ArrowLeftIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

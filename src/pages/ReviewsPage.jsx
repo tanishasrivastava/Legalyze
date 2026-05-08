@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Import navigation hook
+import { useNavigate } from "react-router-dom"; 
 import axios from "axios";
 import "./ReviewsPage.css";
+
+const API = import.meta.env.VITE_AUTH_API;
 
 function ReviewsPage() {
   const [reviews, setReviews] = useState([]);
@@ -9,12 +11,12 @@ function ReviewsPage() {
   const email = localStorage.getItem("email");
   const name = localStorage.getItem("name") || "User";
   const userInitial = name[0].toUpperCase();
-  const navigate = useNavigate(); // ✅ Hook for navigation
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await axios.get(`http://localhost:8080/api/reviews/${email}`);
+       const res = await axios.get(`${API}/api/reviews/${email}`);
         setReviews(res.data);
       } catch (err) {
         console.error("Error fetching reviews", err);
@@ -25,7 +27,7 @@ function ReviewsPage() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/reviews/${id}`);
+    await axios.delete(`${API}/api/reviews/${id}`);
       setReviews(reviews.filter((r) => r.id !== id));
     } catch (err) {
       console.error("Error deleting review", err);

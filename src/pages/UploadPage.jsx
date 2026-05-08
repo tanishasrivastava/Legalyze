@@ -5,6 +5,8 @@ import { Upload, FileText, ChevronRight } from "lucide-react";
 import DashboardLayout from "./DashboardLayout";
 import "./UploadPage.css";
 
+const AI_API = import.meta.env.VITE_AI_API;
+
 function UploadPage() {
   const [file, setFile] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -41,7 +43,7 @@ function UploadPage() {
     if (contractText) formData.append("contract_text", contractText);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/analyze", {
+    const res = await fetch(`${AI_API}/analyze`, {
         method: "POST",
         body: formData,
       });

@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import "./ContractEditor.css";
 
+/* ─── ENV BASE URL ─── */
+const AI_API = import.meta.env.VITE_AI_API;
+
 /* ─── Icons ─── */
 const EditPenIcon = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -185,7 +188,7 @@ export default function ContractEditor({ fullText, safetyScore, parties, selecte
     fd.append("content", content);
     fd.append("filename", "Edited_Contract.docx");
     try {
-      const res = await fetch("http://127.0.0.1:8000/download-docx", { method: "POST", body: fd });
+       const res = await fetch(`${AI_API}/download-docx`, { method: "POST", body: fd });
       if (res.ok) { const blob = await res.blob(); const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = "Edited_Contract.docx"; a.click(); }
       else alert("Export failed.");
     } catch { alert("Export error."); }

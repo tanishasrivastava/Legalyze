@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ClimbingBoxLoader } from "react-spinners"; 
 import "./SelectParty.css";
 
+const AI_API = import.meta.env.VITE_AI_API;
 export default function SelectParty() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -39,7 +40,8 @@ export default function SelectParty() {
     formData.append("filename", filename || documentName || "Contract.pdf"); // FIX: Send filename
 
     try {
-      const res = await fetch(`http://127.0.0.1:8000/analyze/${session_id}/finalize`, {
+    const res = await fetch(
+        `${AI_API}/analyze/${session_id}/finalize`, {
         method: "POST",
         body: formData,
       });

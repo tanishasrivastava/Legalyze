@@ -5,6 +5,8 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import "./FinancialPopup.css";
 
+const AI_API = import.meta.env.VITE_AI_API;
+
 const FinancialPopup = ({ isOpen, onClose, contractText, perspective }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -21,7 +23,7 @@ const FinancialPopup = ({ isOpen, onClose, contractText, perspective }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch("http://localhost:8000/financial-exposure", {
+      const response = await fetch(`${AI_API}/financial-exposure`, {  
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ contract_text: contractText, perspective })

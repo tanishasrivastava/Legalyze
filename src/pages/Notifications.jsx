@@ -5,7 +5,8 @@ import { Bell, Check, Users, FileText, Trash2, CheckCheck } from "lucide-react";
 import DashboardLayout from "./DashboardLayout";
 import "./Notifications.css";
 
-const API = "http://127.0.0.1:8000";
+
+const API = import.meta.env.VITE_AUTH_API;
 
 const Notifications = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const Notifications = () => {
 
   const fetchNotifications = async () => {
     try {
-      const res = await axios.get(`${API}/api/notifications/${email}`);
+       const res = await axios.get(`${API}/api/notifications/${email}`);
       setNotifications(res.data);
     } catch (err) { console.error(err); }
     finally { setLoading(false); }
