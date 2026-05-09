@@ -25,64 +25,76 @@ function AuthPage() {
   }, [location.state]);
 
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  console.log("AUTH_API =", AUTH_API);
+    console.log("AUTH_API =", AUTH_API);
 
-  try {
-    // ================= LOGIN =================
-    if (isLogin) {
+    try {
 
-      const res = await axios.post(
-        `${AUTH_API}/api/auth/login`,
-        {
-          email: form.email,
-          password: form.password,
-        }
+      // ================= LOGIN =================
+      if (isLogin) {
+
+        const res = await axios.post(
+          `${AUTH_API}/api/auth/login`,
+          {
+            email: form.email,
+            password: form.password,
+          }
+        );
+
+        console.log("LOGIN RESPONSE:", res.data);
+
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("role", res.data.role);
+        localStorage.setItem("name", res.data.name);
+        localStorage.setItem("email", form.email);
+
+        alert("Login successful!");
+
+        navigate("/workspace-choice");
+      }
+
+      // ================= SIGNUP =================
+      else {
+
+        const res = await axios.post(
+          `${AUTH_API}/api/auth/signup`,
+          {
+            name: form.name,
+            email: form.email,
+            password: form.password,
+            role: form.role,
+          }
+        );
+
+        console.log("SIGNUP RESPONSE:", res.data);
+
+        alert("Account created successfully!");
+        setForm({
+          name: "",
+          email: "",
+          password: "",
+          role: "CLIENT",
+        });
+        setIsLogin(true);
+      }
+
+    } catch (err) {
+
+      console.error(
+        "AUTH ERROR:",
+        err.response?.data || err.message
       );
 
-      console.log("LOGIN RESPONSE:", res.data);
-
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("role", res.data.role);
-      localStorage.setItem("name", res.data.name);
-      localStorage.setItem("email", form.email);
-
-      navigate("/workspace-choice");
-
-    }
-    // ================= SIGNUP =================
-    else {
-
-      const res = await axios.post(
-        `${AUTH_API}/api/auth/register`,
-        {
-          name: form.name,
-          email: form.email,
-          password: form.password,
-          role: form.role,
-        }
+      alert(
+        err.response?.data?.message ||
+        err.response?.data ||
+        "Authentication failed"
       );
-
-      console.log("REGISTER RESPONSE:", res.data);
-      alert("Account created successfully!");
-      setIsLogin(true);
     }
+  };
 
-  } catch (err) {
-
-    console.error(
-      "AUTH ERROR:",
-      err.response?.data || err.message
-    );
-
-    alert(
-      err.response?.data?.message ||
-      "Authentication failed"
-    );
-  }
-};
 
   return (
     <div className="auth-container">
