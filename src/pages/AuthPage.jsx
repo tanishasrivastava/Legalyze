@@ -28,31 +28,59 @@ function AuthPage() {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  console.log("Submitting login...");
   console.log("AUTH_API =", AUTH_API);
 
   try {
-    const res = await axios.post(
-      `${AUTH_API}/api/auth/login`,
-      {
-        email: form.email,
-        password: form.password,
-      }
-    );
+    // ================= LOGIN =================
+    if (isLogin) {
 
-    console.log("LOGIN RESPONSE:", res.data);
+      const res = await axios.post(
+        `${AUTH_API}/api/auth/login`,
+        {
+          email: form.email,
+          password: form.password,
+        }
+      );
 
-    localStorage.setItem("token", res.data.token);
-    localStorage.setItem("role", res.data.role);
-    localStorage.setItem("name", res.data.name);
-    localStorage.setItem("email", form.email);
+      console.log("LOGIN RESPONSE:", res.data);
 
-    console.log("Navigating...");
-    navigate("/workspace-choice");
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("role", res.data.role);
+      localStorage.setItem("name", res.data.name);
+      localStorage.setItem("email", form.email);
+
+      navigate("/workspace-choice");
+
+    }
+    // ================= SIGNUP =================
+    else {
+
+      const res = await axios.post(
+        `${AUTH_API}/api/auth/register`,
+        {
+          name: form.name,
+          email: form.email,
+          password: form.password,
+          role: form.role,
+        }
+      );
+
+      console.log("REGISTER RESPONSE:", res.data);
+      alert("Account created successfully!");
+      setIsLogin(true);
+    }
 
   } catch (err) {
-    console.error("LOGIN ERROR:", err.response?.data || err.message);
-    alert("Login failed");
+
+    console.error(
+      "AUTH ERROR:",
+      err.response?.data || err.message
+    );
+
+    alert(
+      err.response?.data?.message ||
+      "Authentication failed"
+    );
   }
 };
 
