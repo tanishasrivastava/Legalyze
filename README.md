@@ -1,6 +1,8 @@
 # **Legalyze – AI Contract Analysis Platform**
 
-Legalyze is an AI-powered platform that helps users upload, analyze, edit, and understand legal contracts using advanced AI assistance.
+Legalyze is an AI-driven LegalTech ecosystem that transforms how individuals, startups and organizations analyze, understand, negotiate and manage legal contracts using Large Language Models (LLMs), NLP pipelines and intelligent AI workflows.
+It combines semantic legal reasoning, collaborative workflows, real-time contract intelligence and explainable AI to simplify complex legal documents into actionable insights.
+
 <img width="1440" height="695" alt="Screenshot 2026-05-14 at 1 38 55 PM" src="https://github.com/user-attachments/assets/e81d5bf0-55b8-4757-a58d-c6e527f05f2d" />
 <img width="716" height="740" alt="Screenshot 2026-05-14 at 1 39 55 PM" src="https://github.com/user-attachments/assets/6ab35ef6-21c5-4721-abb9-9dc916083091" />
 <img width="1440" height="740" alt="Screenshot 2026-05-14 at 1 40 23 PM" src="https://github.com/user-attachments/assets/ea9fbdfb-69ba-4faa-8e61-c6178b38a418" />
@@ -51,33 +53,188 @@ Create new legal documents from scratch
 Store past analyses & edits (via Spring Boot + MongoDB)
 
 ---
+# 🧠 Advanced AI Modules
 
-## 🛠️ Tech Stack
+## ⚖️ AI Compliance Checker
+Scans contracts against compliance regulations and legal standards such as:
+- GDPR
+- Labor Law
+- Contractual obligations
+- Regulatory requirements
 
-### **Frontend**
-
-* React.js
-* React Router DOM
-* CSS3
-
-### **Backend**
-
-* **FastAPI (Python)** – AI analysis, PDF parsing, DOCX generation
-* **Spring Boot (Java)** – Authentication, user history, MongoDB
-* **Google Gemini 2.5 Pro & GROQ** – AI models
-* PyPDF2, python-docx, python-multipart
-
-### **Database**
-
-* MongoDB Atlas 
+Provides:
+- Compliance risk detection
+- Legal violation alerts
+- Corrective suggestions
 
 ---
 
-## ⚙️ Setup Instructions
+## 💰 AI Financial Exposure Calculator
+Detects hidden monetary liabilities from:
+- Penalty clauses
+- Breach conditions
+- Compensation obligations
+- Payment liabilities
 
-### **1. Clone Repository**
+Generates estimated financial exposure for safer decision-making.
+
+---
+
+## 📝 Executive Summary Generator
+Generates simplified one-page AI summaries of lengthy contracts for quick understanding and faster decision-making.
+
+---
+
+## 🚪 AI Contract Exit Strategy Mapper
+Identifies all possible legal exit routes from contracts.
+
+### Detects:
+- Termination clauses
+- Force majeure
+- Cooling-off periods
+- Cancellation rights
+- Breach exits
+
+Also generates:
+- Exit risk analysis
+- Cost estimation
+- Notice timelines
+- Exit route classification
+
+---
+
+## 🔮 What-If Scenario Simulator
+Simulates real-world contract situations using AI.
+
+### Example Simulations:
+- Payment delays
+- Contract breaches
+- Non-compliance
+- Early termination
+- Policy violations
+
+Predicts legal and financial outcomes before actions are taken.
+
+---
+
+# 👥 Dual-Mode Collaboration System
+
+## 👤 Individual Mode
+For personal contract analysis and AI interaction.
+
+## 🏢 Business / Team Mode
+Collaborative workspace for organizations.
+
+### Features:
+- Team creation
+- Role-Based Access Control (RBAC)
+- Shared contract workspaces
+- Real-time collaboration
+- Shared activity tracking
+- Live WebSocket synchronization
+
+---
+
+# 🛠️ Tech Stack
+
+## 🎨 Frontend
+- React.js
+- React Router DOM
+- CSS3
+- WebSockets
+
+---
+
+## ⚙️ Backend
+### FastAPI (Python)
+Used for:
+- AI pipelines
+- Contract analysis
+- PDF parsing
+- DOCX generation
+- AI workflows
+
+### Spring Boot (Java)
+Used for:
+- Authentication
+- MongoDB integration
+- User history
+- Team collaboration APIs
+- RBAC system
+
+---
+
+## 🧠 AI / NLP Stack
+- Google Gemini 2.5 Pro
+- GROQ LLM Pipelines
+- Prompt Engineering
+- NLP Workflows
+
+---
+
+## 🗄️ Database
+- MongoDB Atlas
+
+---
+
+## ☁️ Deployment
+- Frontend → Netlify
+- Backend → Render
+- Version Control → GitHub
+
+---
+# ⚙️ Setup Instructions
+
+## 1️⃣ Clone Repository
 
 ```bash
 git clone https://github.com/tanishasrivastava/Legalyze.git
 cd Legalyze
 ```
+
+## 2️⃣ Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## 3️⃣ Backend Setup
+
+### FastAPI Server
+
+```bash
+cd backend-fastapi
+pip install -r requirements.txt
+uvicorn app:app --reload
+```
+
+### Spring Boot Server
+
+```bash
+cd backend-springboot
+./mvnw spring-boot:run
+```
+
+---
+
+# 👩‍💻 Developed By
+
+### Tanisha Srivastava
+- Frontend Development
+- Backend APIs
+- System Architecture
+- Team Collaboration System
+- UI/UX Design
+- WebSocket Integration
+
+### Sherin Baiju
+- AI/NLP Integration
+- Prompt Engineering
+- AI Pipelines
+- Compliance Logic
+- AI Modules Development
+- FastAPI Services
+
+---
