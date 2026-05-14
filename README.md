@@ -1,4 +1,4 @@
-# **Legalyze – AI Contract Analysis Platform**
+# **Legalyze – AI Powered Legal Contract Intelligence Platform**
 
 Legalyze is an AI-driven LegalTech ecosystem that transforms how individuals, startups and organizations analyze, understand, negotiate and manage legal contracts using Large Language Models (LLMs), NLP pipelines and intelligent AI workflows.
 It combines semantic legal reasoning, collaborative workflows, real-time contract intelligence and explainable AI to simplify complex legal documents into actionable insights.
@@ -70,6 +70,7 @@ Provides:
 ---
 
 ## 💰 AI Financial Exposure Calculator
+<img width="836" height="661" alt="Screenshot 2026-04-08 at 5 12 42 PM" src="https://github.com/user-attachments/assets/4dc0515d-cc59-48ca-b725-b12eaf8e8f64" />
 Detects hidden monetary liabilities from:
 - Penalty clauses
 - Breach conditions
@@ -81,11 +82,15 @@ Generates estimated financial exposure for safer decision-making.
 ---
 
 ## 📝 Executive Summary Generator
+<img width="1440" height="782" alt="Screenshot 2026-04-08 at 4 39 11 PM" src="https://github.com/user-attachments/assets/5925c211-5775-4358-99e3-e041727e846d" />
+
 Generates simplified one-page AI summaries of lengthy contracts for quick understanding and faster decision-making.
 
 ---
 
 ## 🚪 AI Contract Exit Strategy Mapper
+<img width="968" height="701" alt="Screenshot 2026-05-12 at 1 35 37 PM" src="https://github.com/user-attachments/assets/8c0d359e-fb05-41aa-bb46-fe445aede3df" />
+
 Identifies all possible legal exit routes from contracts.
 
 ### Detects:
@@ -118,6 +123,7 @@ Predicts legal and financial outcomes before actions are taken.
 ---
 
 # 👥 Dual-Mode Collaboration System
+<img width="1068" height="611" alt="Screenshot 2026-05-07 at 8 38 46 PM" src="https://github.com/user-attachments/assets/efdf4c6a-c933-4f10-93dc-9add3647e86f" />
 
 ## 👤 Individual Mode
 For personal contract analysis and AI interaction.
